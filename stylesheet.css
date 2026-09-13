@@ -1,3 +1,7 @@
+* {
+  font-family: "Fredoka", sans-serif;
+}
+
 header {
   position: fixed;
   background-color: #1d1914;
