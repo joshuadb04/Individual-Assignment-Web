@@ -19,20 +19,16 @@ const showRestaurants = async () => {
           const menu = await getDailyMenu(restaurant._id);
 
           restaurantDialog.innerHTML = restaurantModal(restaurant);
-
           restaurantDialog.querySelector("#menu-content").innerHTML = dailyMenu(menu);
-
           restaurantDialog.show();
 
           restaurantDialog.querySelector("#daily-menu").addEventListener("click", async () => {
             const daily = await getDailyMenu(restaurant._id);
-
             restaurantDialog.querySelector("#menu-content").innerHTML = dailyMenu(daily);
           });
 
           restaurantDialog.querySelector("#weekly-menu").addEventListener("click", async () => {
             const weekly = await getWeeklyMenu(restaurant._id);
-
             restaurantDialog.querySelector("#menu-content").innerHTML = weeklyMenu(weekly);
           });
 
