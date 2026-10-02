@@ -1,20 +1,27 @@
 import { restaurantRow, restaurantModal, dailyMenu, weeklyMenu } from "./components.js";
-
 import { getDailyMenu, getWeeklyMenu } from "./models/restaurant-model.js";
-
-import { loadRestaurants } from "./controllers/restaurant-controller.js";
+import { loadRestaurants, filterCompanies } from "./controllers/restaurant-controller.js";
+import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
 const restaurantTable = document.querySelector("#restaurant-table");
 const restaurantDialog = document.querySelector("#restaurant-dialog");
+const allButton = document.querySelector("#all");
+const sodexoButton = document.querySelector("#sodexo");
+const compassButton = document.querySelector("#compass");
+const cityFilter = document.querySelector("#city-filter");
 
-const showRestaurants = async () => {
+const showRestaurants = async (restaurants) => {
   try {
-    const restaurants = await loadRestaurants();
-
     for (const restaurant of restaurants) {
       const tr = restaurantRow(restaurant);
 
       tr.addEventListener("click", async () => {
+        document.querySelectorAll(".highlight").forEach((element) => {
+          element.classList.remove("highlight");
+        });
+
+        tr.classList.add("highlight");
+
         try {
           const menu = await getDailyMenu(restaurant._id);
 
@@ -47,4 +54,63 @@ const showRestaurants = async () => {
   }
 };
 
-showRestaurants();
+// Load restaurants
+const restaurants = await loadRestaurants();
+
+// Part of city filter
+const cities = [];
+
+for (const restaurant of restaurants) {
+  if (!cities.includes(restaurant.city)) {
+    cities.push(restaurant.city);
+  }
+}
+
+cities.sort();
+
+for (const city of cities) {
+  cityFilter.innerHTML += `<option>${city}</option>`;
+}
+
+// Display restaurants
+showRestaurants(restaurants);
+
+// Company filters
+sodexoButton.addEventListener("click", () => {
+  const filteredRestaurants = filterCompanies("Sodexo");
+
+  restaurantTable.innerHTML = "";
+
+  showRestaurants(filteredRestaurants);
+});
+
+compassButton.addEventListener("click", () => {
+  const filteredRestaurants = filterCompanies("Compass Group");
+
+  restaurantTable.innerHTML = "";
+
+  showRestaurants(filteredRestaurants);
+});
+
+allButton.addEventListener("click", () => {
+  restaurantTable.innerHTML = "";
+
+  showRestaurants(restaurants);
+});
+
+// City filter
+cityFilter.addEventListener("change", () => {
+  const selectedCity = cityFilter.value;
+
+  if (selectedCity === "all") {
+    restaurantTable.innerHTML = "";
+
+    showRestaurants(restaurants);
+  } else {
+    const filteredRestaurants = restaurants.filter((restaurant) => restaurant.city === selectedCity);
+
+    restaurantTable.innerHTML = "";
+
+    showRestaurants(filteredRestaurants);
+  }
+});

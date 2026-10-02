@@ -16,4 +16,8 @@ const searchRestaurants = (searchTerm) => {
   return restaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(term));
 };
 
-export { loadRestaurants, searchRestaurants };
+const filterCompanies = (company) => {
+  return restaurants.filter((restaurant) => restaurant.company === company);
+};
+
+export { loadRestaurants, searchRestaurants, filterCompanies };

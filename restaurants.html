@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurants</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,7 +14,7 @@
 
     <link rel="stylesheet" href="stylesheet.css" />
 
-    <title>Restaurants</title>
+    <script type="module" src="./src/main.js" defer></script>
   </head>
 
   <body>
@@ -21,20 +25,28 @@
 
       <nav id="nav-bar">
         <div id="nav-select">
-          <a href="restaurants.html">Restaurants</a>
-          <a href="temp.html">Anchor2</a>
-          <a href="temp.html">Anchor3</a>
+          <a class="page" href="restaurants.html">Restaurants</a>
+          <a class="page" href="temp.html">Anchor2</a>
+          <a class="page" href="temp.html">Anchor3</a>
         </div>
 
         <div id="nav-select2">
-          <a href="temp.html">Anchor4</a>
-          <a href="temp.html" id="login">Login</a>
+          <a class="page" href="temp.html">Anchor4</a>
+          <a class="page" href="temp.html" id="login">Login</a>
         </div>
       </nav>
     </header>
 
     <main id="restaurant-page">
       <div id="restaurant-list">
+        <button id="all">All</button>
+        <button id="sodexo">Sodexo</button>
+        <button id="compass">Compass Group</button>
+
+        <select id="city-filter">
+          <option value="all">All cities</option>
+        </select>
+
         <table>
           <thead>
             <tr>
@@ -58,7 +70,5 @@
       </p>
       <p class="footer-text">-J</p>
     </footer>
-
-    <script type="module" src="./src/main.js"></script>
   </body>
 </html>

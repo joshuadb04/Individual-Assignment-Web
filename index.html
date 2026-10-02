@@ -3,22 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="stylesheet.css" />
-    <script type="module" src="./src/main.js"></script>
+
+    <script type="module" src="./src/map.js"></script>
+
     <title>Website Layout</title>
   </head>
+
   <body>
     <header>
       <h1 id="logo">UNNAMED</h1>
+
       <nav id="nav-bar">
         <div id="nav-select">
           <a href="restaurants.html" id="a1">Restaurants</a>
           <a href="temp.html" id="a2">Anchor2</a>
           <a href="temp.html" id="a3">Anchor3</a>
         </div>
+
         <div id="nav-select2">
           <a href="temp.html" id="a4">Anchor4</a>
           <a href="temp.html" id="login">Login</a>
@@ -26,9 +34,11 @@
       </nav>
     </header>
 
-    <div id="search-box">
-      <input placeholder="Find restaurant" type="text" id="search-bar" /><button>search</button>
-    </div>
+    <h2 id="restaurant-map-title">Restaurant Map</h2>
+    <div id="map"></div>
+    <button id="map-button">
+      <a href="restaurants.html">View restaurants</a>
+    </button>
 
     <footer>
       <p class="footer-text">

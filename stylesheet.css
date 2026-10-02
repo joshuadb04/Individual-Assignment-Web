@@ -23,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+.page:hover {
+  color: rgb(201, 194, 187);
+}
+
 #nav-select {
   color: rgb(236, 229, 221);
   font-size: 20px;
@@ -120,6 +124,10 @@ tr:hover {
   background-color: #ddd5cc;
 }
 
+.highlight {
+  background-color: #c4bbb2;
+}
+
 dialog {
   position: fixed;
   top: 21%;
@@ -156,4 +164,61 @@ dialog button:hover {
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
+}
+
+#restaurant-list button {
+  background-color: #1d1914;
+  color: rgb(236, 229, 221);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#restaurant-list button:hover {
+  background-color: #3a3028;
+}
+
+#city-filter {
+  background-color: #1d1914;
+  color: rgb(236, 229, 221);
+  border: none;
+  padding: 2px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#restaurant-map-title {
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+#map {
+  height: 350px;
+  width: 600px;
+  margin: 0 auto 30px;
+  border: 1px solid #1d1914;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#map-button {
+  display: block;
+  margin: 0 auto 30px;
+  background-color: #1d1914;
+  color: #f8f5f1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#map-button a {
+  color: #f8f5f1;
+  text-decoration: none;
+}
+
+#map-button:hover {
+  background-color: #3a3028;
 }
