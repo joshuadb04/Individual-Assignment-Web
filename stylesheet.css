@@ -96,6 +96,10 @@ footer {
   background-color: #1d1914;
 }
 
+#footer-block {
+  padding-top: 10px;
+}
+
 .footer-text {
   color: rgb(236, 229, 221);
   padding-left: 50px;
