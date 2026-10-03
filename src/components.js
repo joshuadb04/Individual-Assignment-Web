@@ -46,6 +46,8 @@ const restaurantModal = (restaurant) => {
   const { name, address } = restaurant;
 
   return `
+    <button id="close-dialog" class="close-dialog">×</button>
+
     <h2>${name}</h2>
     <p>Address: ${address}</p>
 
@@ -55,8 +57,6 @@ const restaurantModal = (restaurant) => {
     </div>
 
     <div id="menu-content"></div>
-
-    <button id="close-dialog">Close</button>
   `;
 };
 

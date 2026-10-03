@@ -42,7 +42,12 @@ const showRestaurants = async (restaurants, user) => {
           });
 
           restaurantDialog.querySelector("#close-dialog").addEventListener("click", () => {
-            restaurantDialog.close();
+            restaurantDialog.classList.add("closing");
+
+            setTimeout(() => {
+              restaurantDialog.close();
+              restaurantDialog.classList.remove("closing");
+            }, 250);
           });
         } catch (error) {
           console.error(error);

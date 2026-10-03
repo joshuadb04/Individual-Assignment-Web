@@ -135,17 +135,20 @@ dialog {
   right: 8%;
   left: auto;
   margin: 0;
-
   width: 500px;
   max-height: 500px;
   overflow-y: auto;
-
   background-color: #f8f5f1;
   color: #1d1914;
-
   border: 1px solid #1d1914;
   padding: 20px;
   border-radius: 8px;
+  transform-origin: top center;
+  animation: dialog-open 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+dialog.closing {
+  animation: dialog-close 0.25s cubic-bezier(0.7, 0, 0.84, 0);
 }
 
 dialog button {
@@ -159,6 +162,30 @@ dialog button {
 
 dialog button:hover {
   background-color: #3a3028;
+}
+
+@keyframes dialog-open {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-close {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
 }
 
 .meal {
@@ -465,4 +492,138 @@ dialog button:hover {
 
 #profile-display-username {
   text-align: center;
+}
+
+.close-dialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  color: #8b6f47;
+}
+
+.close-dialog:hover {
+  background: none;
+  color: #3a3028;
+}
+
+@media (max-width: 700px) {
+  #profile-page {
+    width: auto;
+    margin: 120px 20px 40px;
+  }
+
+  #profile-page h2 {
+    margin-left: 0;
+  }
+
+  #profile-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  #profile-form {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  #profile-form input {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  #profile-picture-section {
+    order: -1;
+  }
+
+  #restaurant-dialog {
+    width: auto;
+    max-width: none;
+    right: 20px;
+    left: 20px;
+    box-sizing: border-box;
+  }
+
+  #restaurant-list {
+    width: auto;
+    margin: 0 20px;
+    overflow-x: auto;
+  }
+
+  #restaurant-map-container {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  #map {
+    width: 100%;
+  }
+
+  #register-page {
+    width: auto;
+    margin: 120px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #register-page > h2:first-child {
+    order: 0;
+  }
+
+  #login-section,
+  #register-section {
+    width: 100%;
+  }
+
+  #login-form,
+  #register-form {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  #login-form input,
+  #register-form input {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  header {
+    padding: 10px 15px;
+  }
+
+  #nav-bar {
+    gap: 10px;
+  }
+
+  #nav-select,
+  #nav-select2 {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  dialog .close-dialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: #1d1914;
+    border: none;
+    padding: 0;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    outline: none;
+  }
+
+  dialog .close-dialog:hover {
+    background: none;
+    color: #8b6f47;
+  }
 }
