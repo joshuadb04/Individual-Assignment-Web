@@ -10,7 +10,7 @@ BiteCo is a web application for browsing student restaurants in Finland and view
 
 The deployed website will be available here:
 
-**[Open BiteCo](WEBSITE_LINK_HERE)**
+**[Open BiteCo](https://users.metropolia.fi/~joshuadb/WebDevelopment2026/Individual-Assignment-Web/)**
 
 ## Features
 
