@@ -12,30 +12,49 @@
     <link rel="stylesheet" href="stylesheet.css" />
 
     <script type="module" src="./src/map.js"></script>
+    <script type="module" src="./src/auth.js"></script>
 
     <title>Website Layout</title>
   </head>
 
   <body>
     <header>
-      <h1 id="logo">UNNAMED</h1>
+      <h1 id="logo">
+        <a href="index.html">BiteCo.</a>
+      </h1>
 
       <nav id="nav-bar">
-        <div id="nav-select">
-          <a href="restaurants.html" id="a1">Restaurants</a>
-          <a href="temp.html" id="a2">Anchor2</a>
-          <a href="temp.html" id="a3">Anchor3</a>
-        </div>
-
         <div id="nav-select2">
-          <a href="temp.html" id="a4">Anchor4</a>
-          <a href="temp.html" id="login">Login</a>
+          <a class="page" id="restaurants-link" href="restaurants.html">Restaurants</a>
+          <a class="page" id="profile-link" href="profile.html">Profile</a>
+          <a class="page" id="login-link" href="login-register.html">Login</a>
         </div>
       </nav>
     </header>
+    <div id="welcome-image">
+      <img src="./src/assets/welcome.jpg" alt="Welcome to BiteCo" />
 
-    <h2 id="restaurant-map-title">Restaurant Map</h2>
-    <div id="map"></div>
+      <div id="welcome-text">
+        <h2>BiteCo.</h2>
+        <p>Find your next bite.</p>
+      </div>
+    </div>
+    <p id="restaurant-map-label">FIND A RESTAURANT</p>
+
+    <div id="restaurant-map-container">
+      <div id="map"></div>
+
+      <div id="nearest-restaurant">
+        <h3>Nearest Restaurant</h3>
+
+        <p id="nearest-name"></p>
+
+        <p id="nearest-address"></p>
+
+        <p id="nearest-distance"></p>
+      </div>
+    </div>
+
     <button id="map-button">
       <a href="restaurants.html">View restaurants</a>
     </button>

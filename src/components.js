@@ -1,6 +1,7 @@
-const restaurantRow = (restaurant) => {
-  const { name, address, city, company } = restaurant;
+import { updateFavouriteRestaurant } from "./models/user-model.js";
 
+const restaurantRow = (restaurant, favouriteRestaurant) => {
+  const { name, address, city, company } = restaurant;
   const tr = document.createElement("tr");
 
   tr.innerHTML = `
@@ -8,7 +9,35 @@ const restaurantRow = (restaurant) => {
     <td>${address}</td>
     <td>${city}</td>
     <td>${company}</td>
+    <td>
+      <button class="favorite-button">
+        ${restaurant._id === favouriteRestaurant ? "★" : "☆"}
+      </button>
+    </td>
   `;
+
+  const favoriteButton = tr.querySelector(".favorite-button");
+
+  favoriteButton.addEventListener("click", async (event) => {
+    event.stopPropagation();
+
+    if (!localStorage.getItem("token")) {
+      alert("Please login first.");
+      return;
+    }
+
+    try {
+      await updateFavouriteRestaurant(restaurant._id);
+
+      document.querySelectorAll(".favorite-button").forEach((button) => {
+        button.textContent = "☆";
+      });
+
+      favoriteButton.textContent = "★";
+    } catch (error) {
+      console.error("Favorite error:", error);
+    }
+  });
 
   return tr;
 };

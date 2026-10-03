@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script type="module" src="./src/profile.js" defer></script>
+    <script type="module" src="./src/auth.js"></script>
+    <title>Profile</title>
+  </head>
+
+  <body>
+    <header>
+      <h1 id="logo"><a href="index.html">BiteCo.</a></h1>
+
+      <nav id="nav-bar">
+        <div id="nav-select2">
+          <a class="page" id="restaurants-link" href="restaurants.html">Restaurants</a>
+          <a class="page" id="profile-link" href="profile.html">Profile</a>
+          <a class="page" id="login-link" href="login-register.html">Login</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="profile-page">
+      <h2>Profile</h2>
+
+      <div id="profile-content">
+        <form id="profile-form">
+          <label for="profile-username">Username</label>
+          <input type="text" id="profile-username" required />
+
+          <label for="profile-email">Email</label>
+          <input type="email" id="profile-email" required />
+
+          <label for="profile-password">New password</label>
+          <input type="password" id="profile-password" />
+
+          <label for="profile-confirm-password">Confirm password</label>
+          <input type="password" id="profile-confirm-password" />
+
+          <label for="profile-avatar">Profile picture</label>
+          <input type="file" id="profile-avatar" accept="image/*" />
+
+          <button type="submit">Save changes</button>
+          <p id="profile-message"></p>
+        </form>
+
+        <div id="profile-picture-section">
+          <div id="profile-picture">
+            <img id="profile-avatar-image" src="" alt="Profile picture" />
+          </div>
+
+          <p id="profile-display-username"></p>
+          <p id="profile-favourite-restaurant"></p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p class="footer-text">
+        Everything you're seeing is still temporary and basically empty, and subject to change in the future.
+      </p>
+      <p class="footer-text">-J</p>
+    </footer>
+  </body>
+</html>

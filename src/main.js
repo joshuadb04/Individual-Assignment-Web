@@ -1,7 +1,7 @@
 import { restaurantRow, restaurantModal, dailyMenu, weeklyMenu } from "./components.js";
 import { getDailyMenu, getWeeklyMenu } from "./models/restaurant-model.js";
+import { getUser } from "./models/user-model.js";
 import { loadRestaurants, filterCompanies } from "./controllers/restaurant-controller.js";
-import * as L from "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js";
 
 const restaurantTable = document.querySelector("#restaurant-table");
 const restaurantDialog = document.querySelector("#restaurant-dialog");
@@ -10,10 +10,12 @@ const sodexoButton = document.querySelector("#sodexo");
 const compassButton = document.querySelector("#compass");
 const cityFilter = document.querySelector("#city-filter");
 
-const showRestaurants = async (restaurants) => {
+const showRestaurants = async (restaurants, user) => {
   try {
     for (const restaurant of restaurants) {
-      const tr = restaurantRow(restaurant);
+      const favouriteRestaurant = user ? user.favouriteRestaurant : null;
+
+      const tr = restaurantRow(restaurant, favouriteRestaurant);
 
       tr.addEventListener("click", async () => {
         document.querySelectorAll(".highlight").forEach((element) => {
@@ -54,10 +56,14 @@ const showRestaurants = async (restaurants) => {
   }
 };
 
-// Load restaurants
 const restaurants = await loadRestaurants();
 
-// Part of city filter
+let user = null;
+
+if (localStorage.getItem("token")) {
+  user = await getUser();
+}
+
 const cities = [];
 
 for (const restaurant of restaurants) {
@@ -72,16 +78,14 @@ for (const city of cities) {
   cityFilter.innerHTML += `<option>${city}</option>`;
 }
 
-// Display restaurants
-showRestaurants(restaurants);
+showRestaurants(restaurants, user);
 
-// Company filters
 sodexoButton.addEventListener("click", () => {
   const filteredRestaurants = filterCompanies("Sodexo");
 
   restaurantTable.innerHTML = "";
 
-  showRestaurants(filteredRestaurants);
+  showRestaurants(filteredRestaurants, user);
 });
 
 compassButton.addEventListener("click", () => {
@@ -89,28 +93,25 @@ compassButton.addEventListener("click", () => {
 
   restaurantTable.innerHTML = "";
 
-  showRestaurants(filteredRestaurants);
+  showRestaurants(filteredRestaurants, user);
 });
 
 allButton.addEventListener("click", () => {
   restaurantTable.innerHTML = "";
 
-  showRestaurants(restaurants);
+  showRestaurants(restaurants, user);
 });
 
-// City filter
 cityFilter.addEventListener("change", () => {
   const selectedCity = cityFilter.value;
 
-  if (selectedCity === "all") {
-    restaurantTable.innerHTML = "";
+  restaurantTable.innerHTML = "";
 
-    showRestaurants(restaurants);
+  if (selectedCity === "all") {
+    showRestaurants(restaurants, user);
   } else {
     const filteredRestaurants = restaurants.filter((restaurant) => restaurant.city === selectedCity);
 
-    restaurantTable.innerHTML = "";
-
-    showRestaurants(filteredRestaurants);
+    showRestaurants(filteredRestaurants, user);
   }
 });

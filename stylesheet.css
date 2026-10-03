@@ -4,6 +4,7 @@
 
 header {
   position: fixed;
+  z-index: 1000;
   background-color: #1d1914;
   width: 100%;
   top: 0%;
@@ -93,7 +94,6 @@ footer {
   width: 100%;
   height: 100px;
   background-color: #1d1914;
-  margin-top: 100vh;
 }
 
 .footer-text {
@@ -105,6 +105,7 @@ footer {
   margin-top: 120px;
   margin-left: 30px;
   width: fit-content;
+  min-height: 800px;
 }
 
 th {
@@ -166,7 +167,7 @@ dialog button:hover {
   margin-bottom: 10px;
 }
 
-#restaurant-list button {
+#restaurant-list button:not(.favorite-button) {
   background-color: #1d1914;
   color: rgb(236, 229, 221);
   border: none;
@@ -174,7 +175,7 @@ dialog button:hover {
   border-radius: 4px;
 }
 
-#restaurant-list button:hover {
+#restaurant-list button:not(.favorite-button):hover {
   background-color: #3a3028;
 }
 
@@ -188,20 +189,64 @@ dialog button:hover {
   border-radius: 4px;
 }
 
-#restaurant-map-title {
+#restaurant-map-label {
   text-align: center;
   margin-top: 120px;
+  margin-bottom: 10px;
+  color: #1d1914;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#restaurant-map-title {
+  text-align: center;
+  margin-top: 0;
   margin-bottom: 20px;
   font-weight: normal;
 }
 
-#map {
-  height: 350px;
-  width: 600px;
+#restaurant-map-text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#restaurant-map-container {
+  display: flex;
+  width: 750px;
   margin: 0 auto 30px;
   border: 1px solid #1d1914;
   border-radius: 8px;
   overflow: hidden;
+  background-color: #f8f5f1;
+}
+
+#map {
+  height: 350px;
+  width: 500px;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+#nearest-restaurant {
+  flex: 1;
+  padding: 30px;
+}
+
+#nearest-restaurant h3 {
+  margin-top: 0;
+  color: #1d1914;
+  font-weight: normal;
+}
+
+#nearest-name {
+  font-weight: bold;
+}
+
+#nearest-distance {
+  color: #1d1914;
 }
 
 #map-button {
@@ -221,4 +266,203 @@ dialog button:hover {
 
 #map-button:hover {
   background-color: #3a3028;
+}
+
+.leaflet-container {
+  z-index: 0;
+}
+
+#register-page {
+  width: 800px;
+  margin: 140px auto 0;
+}
+
+#register-page {
+  width: 800px;
+  margin: 140px auto 0;
+  display: flex;
+  gap: 80px;
+  min-height: 700px;
+}
+
+#login-section,
+#register-section {
+  width: 350px;
+}
+
+#register-page h2 {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+#register-form,
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#register-form input,
+#login-form input {
+  height: 25px;
+  box-sizing: border-box;
+}
+
+#register-form button,
+#login-form button {
+  background-color: #1d1914;
+  color: rgb(236, 229, 221);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: fit-content;
+}
+
+#register-form button:hover,
+#login-form button:hover {
+  background-color: #3a3028;
+}
+
+#register-message {
+  margin-top: 5px;
+}
+
+#profile-page {
+  width: 900px;
+  margin: 240px auto 0;
+  min-height: 800px;
+}
+
+#profile-page h2 {
+  font-weight: normal;
+  margin-bottom: 20px;
+  margin-left: 150px;
+}
+
+#profile-content {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+#profile-picture-section {
+  width: 150px;
+  margin-top: 20px;
+}
+
+#profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ddd;
+  margin-bottom: 15px;
+}
+
+#profile-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profile-form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#profile-form input {
+  height: 25px;
+  box-sizing: border-box;
+}
+
+#profile-form button {
+  background-color: #1d1914;
+  color: rgb(236, 229, 221);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: fit-content;
+}
+
+#profile-form button:hover {
+  background-color: #3a3028;
+}
+
+#profile-message {
+  margin-top: 5px;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.favorite-button:hover {
+  color: #8b6f47;
+}
+
+#welcome-image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+#welcome-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(29, 25, 20, 0.25);
+}
+
+#welcome-image img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+#welcome-text {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#welcome-text h2 {
+  margin: 0;
+  color: #f8f5f1;
+  font-size: 85px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #1d1914;
+}
+
+#welcome-text p {
+  margin-top: 8px;
+  color: #f8f5f1;
+  font-size: 33px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px #1d1914;
+}
+
+#profile-favourite-restaurant {
+  margin: 5px 0 10px;
+  color: #1d1914;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#profile-display-username {
+  text-align: center;
 }
